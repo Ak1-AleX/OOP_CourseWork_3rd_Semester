@@ -24,6 +24,16 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         .gitignore
+        devicewindow.h
+        devicewindow.cpp
+        ball.h
+        ball.cpp
+        params.h
+        params.cpp
+        events.h
+        events.cpp
+        simulation.h
+        simulation.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET OOP_CourseWork APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

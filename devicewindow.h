@@ -1,0 +1,4 @@
+#ifndef DEVICEWINDOW_H
+#define DEVICEWINDOW_H
+
+#endif // DEVICEWINDOW_H

@@ -1,4 +1,3 @@
-// защита от повторного включения файла
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
