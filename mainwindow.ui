@@ -11,18 +11,456 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>The Ball Game</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>25</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="GameZone">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>500</width>
+      <height>550</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+}</string>
+    </property>
+    <property name="text">
+     <string>ОКНО ИГРЫ</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Text1">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>20</y>
+      <width>170</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+	background-color: #adcef0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Размер площадки</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Text2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>140</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+	background-color: #adcef0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Радиус шарика</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Text3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>200</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+	background-color: #adcef0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Скорость движения</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Text4">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>260</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+	background-color: #adcef0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Начальный угол</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Vvod1">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>20</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Vvod2">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>140</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Vvod3">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>200</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Vvod4">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>260</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Vvod1_2">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>80</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button1">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>330</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &quot;вдавленности&quot; */
+    padding-bottom: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Применить</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>330</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &quot;вдавленности&quot; */
+    padding-bottom: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Сброс</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button4">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>450</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &quot;вдавленности&quot; */
+    padding-bottom: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Стоп</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>450</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &quot;вдавленности&quot; */
+    padding-bottom: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Старт</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button5">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>510</y>
+      <width>271</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &quot;вдавленности&quot; */
+    padding-bottom: 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Сброс</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>400</y>
+      <width>291</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
