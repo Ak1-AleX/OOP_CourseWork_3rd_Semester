@@ -71,13 +71,13 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="buttons_layout" stretch="8,0,2">
+      <layout class="QVBoxLayout" name="buttons_layout" stretch="8,0,0,0,2">
        <item>
         <layout class="QVBoxLayout" name="params_layout">
          <item>
-          <layout class="QHBoxLayout" name="ball_angle_layout" stretch="3,1">
+          <layout class="QHBoxLayout" name="area_size_layout" stretch="3,1">
            <item>
-            <widget class="QLabel" name="angle_size">
+            <widget class="QLabel" name="area_size">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -86,7 +86,7 @@
              </property>
              <property name="font">
               <font>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -98,30 +98,49 @@
 }</string>
              </property>
              <property name="text">
-              <string>Начальный угол</string>
+              <string>Размер площадки</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="input_angle_size">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="add_size_layout">
+             <item>
+              <widget class="QSpinBox" name="input_area_height">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>9999</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="input_area_width">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
@@ -137,7 +156,7 @@
              </property>
              <property name="font">
               <font>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -177,6 +196,57 @@
           </layout>
          </item>
          <item>
+          <layout class="QHBoxLayout" name="ball_angle_layout" stretch="3,1">
+           <item>
+            <widget class="QLabel" name="angle_size">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    border: 1px solid black;
+    color: black;
+	qproperty-alignment: 'AlignCenter';
+	background-color: #adcef0;
+}</string>
+             </property>
+             <property name="text">
+              <string>Начальный угол</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="input_angle_size">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="ball_speed_layout" stretch="3,1">
            <item>
             <widget class="QLabel" name="speed_size">
@@ -188,7 +258,7 @@
              </property>
              <property name="font">
               <font>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -228,57 +298,6 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="area_size_layout" stretch="3,1">
-           <item>
-            <widget class="QLabel" name="area_size">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
-}</string>
-             </property>
-             <property name="text">
-              <string>Размер площадки</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="input_area_size">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="minimum">
-              <number>0</number>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="params_approve_layout" stretch="0,0">
            <item>
             <widget class="QPushButton" name="accept_button">
@@ -294,11 +313,25 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
+              <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &amp;quot;вдавленности&amp;quot; */
+    padding-bottom: 5px;
 }</string>
              </property>
              <property name="text">
@@ -320,11 +353,25 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
+              <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #FF6B6B;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #FF5252;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #D32F2F;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &amp;quot;вдавленности&amp;quot; */
+    padding-bottom: 5px;
 }</string>
              </property>
              <property name="text">
@@ -337,7 +384,27 @@
         </layout>
        </item>
        <item>
-        <widget class="Line" name="line">
+        <widget class="Line" name="line_up">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="Line" name="line_down">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -361,11 +428,25 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
+              <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &amp;quot;вдавленности&amp;quot; */
+    padding-bottom: 5px;
 }</string>
              </property>
              <property name="text">
@@ -387,11 +468,25 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
+              <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #adcef0;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #9bc0e5;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #7ca8d0;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &amp;quot;вдавленности&amp;quot; */
+    padding-bottom: 5px;
 }</string>
              </property>
              <property name="text">
@@ -415,11 +510,25 @@
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QLabel {
-    border: 1px solid black;
-    color: black;
-	qproperty-alignment: 'AlignCenter';
-	background-color: #adcef0;
+            <string notr="true">QPushButton {
+    border: 3px solid #000000;
+    background-color: #FF6B6B;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Стиль при наведении */
+QPushButton:hover {
+    background-color: #FF5252;
+    border-color: #333333;
+}
+
+/* Стиль при нажатии */
+QPushButton:pressed {
+    background-color: #D32F2F;
+    border-color: #555555;
+    padding-top: 7px;    /* Создаём эффект &amp;quot;вдавленности&amp;quot; */
+    padding-bottom: 5px;
 }</string>
            </property>
            <property name="text">
