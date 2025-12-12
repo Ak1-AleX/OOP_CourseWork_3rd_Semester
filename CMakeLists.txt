@@ -28,8 +28,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         devicewindow.cpp
         ball.h
         ball.cpp
-        params.h
-        params.cpp
+        parameters.h
+        parameters.cpp
         events.h
         events.cpp
         simulation.h
