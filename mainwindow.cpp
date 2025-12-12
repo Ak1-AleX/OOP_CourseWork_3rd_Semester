@@ -174,6 +174,21 @@ void MainWindow::on_pause_button_clicked()
 void MainWindow::on_stop_button_clicked()
 {
     m_simulation->stop();
+
+    // Добавьте эти 2 строки:
+    QPointF center(m_simulation->parameters()->fieldWidth() / 2.0,
+                   m_simulation->parameters()->fieldHeight() / 2.0);
+    m_simulation->ball()->resetPosition(center);
+
+    // Обновляем UI
+    updateUI();
+
+    // Принудительно перерисовываем
+    if (m_deviceWindow) {
+        m_deviceWindow->update();
+    }
+
+    showStatusMessage("Симуляция остановлена, шарик в центре", false);
 }
 
 void MainWindow::on_field_width_changed(int value)
