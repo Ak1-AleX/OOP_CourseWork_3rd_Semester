@@ -53,7 +53,10 @@ void Parameters::setBallRadius(int radius)
 
     // Дополнительная проверка: шарик должен помещаться в площадку
     if (radius * 2 > m_fieldWidth || radius * 2 > m_fieldHeight) {
-        emit validationError("Шарик слишком большой для указанных размеров площадки");
+        // Автоматически сбрасываем к дефолтным значениям
+        resetToDefaults();
+        emit validationError("Шарик слишком большой для указанных размеров площадки. "
+                             "Параметры сброшены к значениям по умолчанию.");
         return;
     }
 
