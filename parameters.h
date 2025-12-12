@@ -27,7 +27,7 @@ public:
     static constexpr int MIN_BALL_RADIUS = 5;
     static constexpr int MAX_BALL_RADIUS = 100;
     static constexpr int MIN_SPEED = 1;
-    static constexpr int MAX_SPEED = 100;
+    static constexpr int MAX_SPEED = 800;
     static constexpr int MIN_ANGLE = 0;
     static constexpr int MAX_ANGLE = 360;
 
