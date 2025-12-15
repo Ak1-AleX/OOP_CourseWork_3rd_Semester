@@ -51,7 +51,6 @@ void Parameters::setBallRadius(int radius)
         return;
     }
 
-    // Дополнительная проверка: шарик должен помещаться в площадку
     if (radius * 2 > m_fieldWidth || radius * 2 > m_fieldHeight) {
         // Автоматически сбрасываем к дефолтным значениям
         resetToDefaults();
@@ -99,7 +98,7 @@ void Parameters::setBallAngle(int angle)
 
 bool Parameters::applyParameters(int width, int height, int radius, int speed, int angle)
 {
-    // Проверка всех параметров перед установкой
+    // Проверка всех параметров
     if (!validateFieldSize(width, height) ||
         !validateBallRadius(radius) ||
         !validateBallSpeed(speed) ||
@@ -107,7 +106,7 @@ bool Parameters::applyParameters(int width, int height, int radius, int speed, i
         return false;
     }
 
-    // Дополнительная проверка на размер шарика
+    //проверка на размер шарика
     if (radius * 2 > width || radius * 2 > height) {
         emit validationError("Шарик слишком большой для указанных размеров площадки");
         return false;
@@ -194,7 +193,7 @@ QString Parameters::validate() const
             .arg(MIN_ANGLE).arg(MAX_ANGLE);
     }
 
-    return QString(); // Нет ошибок
+    return QString();
 }
 
 QPointF Parameters::calculateVelocity() const

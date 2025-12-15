@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// Включаем наши классы
 #include "simulation.h"
 #include "devicewindow.h"
 #include "parameters.h"
@@ -20,17 +19,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // 1. Создаем симуляцию
+    // оздаем симуляцию
     m_simulation = new Simulation(this);
 
-    // 2. Настраиваем DeviceWindow внутри контейнера
+
     setupDeviceWindow();
 
-    // 3. Настраиваем остальной UI
+
     setupUI();
     setupConnections();
 
-    // 4. Инициализация UI из параметров
+    //Инициализация UI из параметров
     updateUIFromParameters();
     updateUI();
 
@@ -47,13 +46,13 @@ void MainWindow::setupDeviceWindow()
     // Создаем DeviceWindow
     m_deviceWindow = new DeviceWindow(this);
 
-    // Находим контейнер из .ui файла
+    // Находим контейнер
     QWidget *container = ui->deviceContainer;
 
     if (container) {
-        // Создаем layout для контейнера
+        // Создаем layout
         QVBoxLayout *containerLayout = new QVBoxLayout(container);
-        containerLayout->setContentsMargins(0, 0, 0, 0); // Убираем отступы
+        containerLayout->setContentsMargins(0, 0, 0, 0); //отступы
         containerLayout->setSpacing(0);
 
         // Добавляем DeviceWindow в контейнер
@@ -73,21 +72,21 @@ void MainWindow::setupDeviceWindow()
 
 void MainWindow::setupUI()
 {
-    // Устанавливаем диапазоны для спинбоксов из Parameters
+    // Устанавливаем диапазоны для спинбокс
     ui->input_area_width->setRange(Parameters::MIN_FIELD_SIZE, Parameters::MAX_FIELD_SIZE);
     ui->input_area_height->setRange(Parameters::MIN_FIELD_SIZE, Parameters::MAX_FIELD_SIZE);
     ui->input_radius_size->setRange(Parameters::MIN_BALL_RADIUS, Parameters::MAX_BALL_RADIUS);
     ui->input_speed_size->setRange(Parameters::MIN_SPEED, Parameters::MAX_SPEED);
     ui->input_angle_size->setRange(Parameters::MIN_ANGLE, Parameters::MAX_ANGLE);
 
-    // Устанавливаем значения по умолчанию
+    //значения по умолчанию
     ui->input_area_width->setValue(Parameters::DEFAULT_FIELD_WIDTH);
     ui->input_area_height->setValue(Parameters::DEFAULT_FIELD_HEIGHT);
     ui->input_radius_size->setValue(Parameters::DEFAULT_BALL_RADIUS);
     ui->input_speed_size->setValue(Parameters::DEFAULT_BALL_SPEED);
     ui->input_angle_size->setValue(Parameters::DEFAULT_BALL_ANGLE);
 
-    // Настраиваем статусбар
+    //статусбар нижниий
     ui->statusbar->setStyleSheet("QStatusBar { color: #333; }");
 }
 
@@ -107,7 +106,7 @@ void MainWindow::setupConnections()
     connect(ui->stop_button, &QPushButton::clicked,
             this, &MainWindow::on_stop_button_clicked);
 
-    // Спинбоксы - теперь два спинбокса для размеров!
+    // Спинбоксы
     connect(ui->input_area_width, QOverload<int>::of(&QSpinBox::valueChanged),
             this, &MainWindow::on_field_width_changed);
     connect(ui->input_area_height, QOverload<int>::of(&QSpinBox::valueChanged),
@@ -119,7 +118,7 @@ void MainWindow::setupConnections()
     connect(ui->input_angle_size, QOverload<int>::of(&QSpinBox::valueChanged),
             this, &MainWindow::on_ball_angle_changed);
 
-    // Симуляция → UI
+    // Симуляция - UI
     if (m_simulation) {
         connect(m_simulation->events(), &Events::stateChanged,
                 this, &MainWindow::onSimulationStateChanged);
@@ -129,7 +128,7 @@ void MainWindow::setupConnections()
                 this, &MainWindow::onValidationError);
     }
 
-    // Обновление DeviceWindow
+    //  DeviceWindow UPD
     if (m_simulation && m_deviceWindow) {
         connect(m_simulation, &Simulation::simulationUpdated,
                 m_deviceWindow, QOverload<>::of(&QWidget::update));
@@ -175,7 +174,6 @@ void MainWindow::on_stop_button_clicked()
 {
     m_simulation->stop();
 
-    // Добавьте эти 2 строки:
     QPointF center(m_simulation->parameters()->fieldWidth() / 2.0,
                    m_simulation->parameters()->fieldHeight() / 2.0);
     m_simulation->ball()->resetPosition(center);
@@ -183,7 +181,7 @@ void MainWindow::on_stop_button_clicked()
     // Обновляем UI
     updateUI();
 
-    // Принудительно перерисовываем
+    // FixBug делаем перерисовку шарик центр не возвращался,гит коммит чек
     if (m_deviceWindow) {
         m_deviceWindow->update();
     }
@@ -196,7 +194,7 @@ void MainWindow::on_field_width_changed(int value)
     if (m_simulation->events()->canModifyParameters()) {
         m_simulation->parameters()->setFieldWidth(value);
     } else {
-        // Возвращаем старое значение
+        // старое значение
         ui->input_area_width->blockSignals(true);
         ui->input_area_width->setValue(m_simulation->parameters()->fieldWidth());
         ui->input_area_width->blockSignals(false);
@@ -211,7 +209,7 @@ void MainWindow::on_field_height_changed(int value)
     if (m_simulation->events()->canModifyParameters()) {
         m_simulation->parameters()->setFieldHeight(value);
     } else {
-        // Возвращаем старое значение
+        // старое значение
         ui->input_area_height->blockSignals(true);
         ui->input_area_height->setValue(m_simulation->parameters()->fieldHeight());
         ui->input_area_height->blockSignals(false);
@@ -265,8 +263,6 @@ void MainWindow::updateParametersFromUI()
 
     // Применяем параметры
     if (!m_simulation->parameters()->applyParameters(width, height, radius, speed, angle)) {
-        // Если applyParameters вернула false, значит была ошибка валидации
-        // Сообщение об ошибке уже было отправлено через сигнал validationError
         updateUIFromParameters(); // Возвращаем старые значения в UI
     }
 }
@@ -275,7 +271,7 @@ void MainWindow::updateUIFromParameters()
 {
     Parameters *params = m_simulation->parameters();
 
-    // Блокируем сигналы, чтобы избежать рекурсии
+    //избежать рекурсии
     ui->input_area_width->blockSignals(true);
     ui->input_area_height->blockSignals(true);
     ui->input_radius_size->blockSignals(true);
@@ -324,7 +320,6 @@ void MainWindow::updateUI()
 // Реализация вспомогательного метода
 QString MainWindow::getStateString(int state)
 {
-    // Преобразуем int в Events::State
     Events::State enumState = static_cast<Events::State>(state);
 
     switch (enumState) {
@@ -351,7 +346,7 @@ void MainWindow::onParametersChanged()
     updateUIFromParameters();
     m_deviceWindow->update();
 
-    // Показываем информацию о новых параметрах
+    //новых параметрах
     Parameters *params = m_simulation->parameters();
     QString msg = QString("Параметры обновлены: %1×%2, R=%3, V=%4, A=%5°")
                       .arg(params->fieldWidth())

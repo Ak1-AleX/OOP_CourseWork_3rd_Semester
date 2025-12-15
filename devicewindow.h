@@ -25,4 +25,4 @@ private:
     Simulation *m_simulation;
 };
 
-#endif // DEVICEWINDOW_H
+#endif

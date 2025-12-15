@@ -31,7 +31,7 @@ void Ball::setRadius(int radius)
 {
     if (m_radius != radius && radius > 0) {
         m_radius = radius;
-        emit positionChanged(); // Изменение радиуса влияет на отображение
+        emit positionChanged(); // Изменение рад
     }
 }
 
@@ -75,11 +75,11 @@ void Ball::handleWallCollision(const QRectF &boundary)
 {
     QRectF ballRect = boundingRect();
 
-    // Проверка столкновения с левой/правой стенкой
+    // Проверка столкновения с стенк l/r
     if (ballRect.left() <= boundary.left() ||
         ballRect.right() >= boundary.right()) {
-        m_velocity.setX(-m_velocity.x()); // Инвертируем горизонтальную скорость
-        // Корректируем позицию, чтобы шарик не застрял в стене
+        m_velocity.setX(-m_velocity.x()); // горизонт скорость
+        // Корректм поз, чтобы шарик не застрял в стене
         if (ballRect.left() <= boundary.left()) {
             m_position.setX(boundary.left() + m_radius);
         } else {
@@ -87,7 +87,7 @@ void Ball::handleWallCollision(const QRectF &boundary)
         }
     }
 
-    // Проверка столкновения с верхней/нижней стенкой
+    // Проверка столкновения с u/d стенкой
     if (ballRect.top() <= boundary.top() ||
         ballRect.bottom() >= boundary.bottom()) {
         m_velocity.setY(-m_velocity.y()); // Инвертируем вертикальную скорость

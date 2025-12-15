@@ -35,7 +35,7 @@ private slots:
 
     // Слоты для обновления UI
     void updateUI();
-    void onSimulationStateChanged(int state);  // Изменено с Events::State на int
+    void onSimulationStateChanged(int state);
     void onParametersChanged();
     void onValidationError(const QString &message);
 
@@ -59,7 +59,7 @@ private:
     void updateControlsState();
 
     void showStatusMessage(const QString &message, bool isError = false);
-    QString getStateString(int state);  // Изменено с Events::State на int
+    QString getStateString(int state);
 };
 
-#endif // MAINWINDOW_H
+#endif

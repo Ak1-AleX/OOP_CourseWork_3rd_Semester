@@ -10,7 +10,7 @@ DeviceWindow::DeviceWindow(QWidget *parent)
     : QWidget(parent)
     , m_simulation(nullptr)
 {
-    // Устанавливаем Expanding размерную политику
+    // Устанавливаем  размер
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     // Устанавливаем белый фон
@@ -79,7 +79,7 @@ void DeviceWindow::paintEvent(QPaintEvent *event)
     qreal scale = qMin(scaleX, scaleY);
 
     // Если поле слишком большое для отображения, уменьшаем масштаб
-    if (scale > 1.5) scale = 1.5; // Максимальный zoom
+    if (scale > 1.5) scale = 1.5; // Максимальный зумм
 
     // Центрируем поле
     qreal scaledWidth = fieldWidth * scale;
@@ -93,7 +93,8 @@ void DeviceWindow::paintEvent(QPaintEvent *event)
     painter.setPen(QPen(Qt::black, 2));
     painter.drawRect(fieldRect);
 
-    // Рисуем сетку (опционально, для наглядности)
+    //TODO: СЕТКА
+    //сетка
     painter.setPen(QPen(QColor(220, 220, 220), 1));
 
     // Вертикальные линии
@@ -118,7 +119,7 @@ void DeviceWindow::paintEvent(QPaintEvent *event)
     QPointF ballPos = ball->position();
     qreal ballRadius = ball->radius();
 
-    // Проверяем, что позиция шарика валидна
+    // Проверяем позиция шарика valid
     if (ballPos.x() >= 0 && ballPos.x() <= fieldWidth &&
         ballPos.y() >= 0 && ballPos.y() <= fieldHeight) {
 
@@ -147,7 +148,7 @@ void DeviceWindow::paintEvent(QPaintEvent *event)
         painter.setPen(QPen(Qt::white, 2));
         painter.drawPoint(scaledPos);
 
-        // Рисуем направление движения (если симуляция запущена)
+        // Рисуем направление движения
         if (m_simulation->events()->isRunning()) {
             QPointF velocity = ball->velocity();
             qreal speed = qSqrt(velocity.x() * velocity.x() + velocity.y() * velocity.y());
@@ -196,7 +197,7 @@ void DeviceWindow::paintEvent(QPaintEvent *event)
     painter.drawText(5, 15, scaleText);
 }
 
-// Переопределяем sizeHint для задания предпочтительного размера
+// Переопределяем sizeHint
 QSize DeviceWindow::sizeHint() const
 {
     return QSize(500, 400); // Предпочтительный размер

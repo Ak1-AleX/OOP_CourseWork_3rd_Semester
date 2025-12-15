@@ -8,7 +8,6 @@ Simulation::Simulation(QObject *parent)
 {
     setupConnections();
 
-    // Настройка таймера (60 FPS)
     m_timer.setInterval(16); // ~16ms = 60 FPS
     connect(&m_timer, &QTimer::timeout, this, &Simulation::update);
 
@@ -26,17 +25,17 @@ Simulation::~Simulation()
 
 void Simulation::setupConnections()
 {
-    // Параметры → симуляция
+    // Параметры - симуляция
     connect(m_parameters, &Parameters::parametersChanged,
             this, &Simulation::onParametersChanged);
 
-    // События → симуляция
+    // События - симуляция
     connect(m_events, &Events::stateChanged,
             this, &Simulation::onEventsStateChanged);
     connect(m_events, &Events::resetRequested,
             this, &Simulation::onResetRequested);
 
-    // Шарик → обновление отрисовки
+    // Шарик - обновление отрисовки
     connect(&m_ball, &Ball::positionChanged,
             this, &Simulation::simulationUpdated);
     connect(&m_ball, &Ball::velocityChanged,
@@ -75,8 +74,7 @@ void Simulation::update()
     }
 
     // Двигаем шарик
-    m_ball.move(0.016); // dt для 60 FPS
-
+    m_ball.move(0.016);
     // Проверяем столкновения со стенками
     if (m_ball.checkWallCollision(fieldBoundary())) {
         m_ball.handleWallCollision(fieldBoundary());

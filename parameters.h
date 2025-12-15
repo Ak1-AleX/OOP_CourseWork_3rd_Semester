@@ -14,7 +14,7 @@ class Parameters : public QObject
     Q_PROPERTY(int ballAngle READ ballAngle WRITE setBallAngle NOTIFY ballAngleChanged)
 
 public:
-    // Константы по умолчанию (из задания)
+    // Константы по умолчанию
     static constexpr int DEFAULT_FIELD_WIDTH = 800;
     static constexpr int DEFAULT_FIELD_HEIGHT = 600;
     static constexpr int DEFAULT_BALL_RADIUS = 25;
